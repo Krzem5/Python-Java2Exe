@@ -1,1 +1,3 @@
-python index.py
+@echo off
+cls
+python src/index.py
