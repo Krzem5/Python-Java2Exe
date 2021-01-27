@@ -1,4 +1,3 @@
-import ntpath
 import os
 import shutil
 import time
@@ -46,8 +45,8 @@ for k in str(jar_zip.read("META-INF/MANIFEST.MF"))[2:-1].split("\\n"):
 	if (k.startswith("Main-Class:")):
 		mc=k.split(":")[1].strip().replace("\\r","")
 st=time.time()
-cp=ntpath.abspath(f"./tmp/xml-{st}.xml")
-op=ntpath.abspath(f"./tmp/{st}.exe")
+cp=os.path.abspath(f"./tmp/xml-{st}.xml")
+op=os.path.abspath(f"./tmp/{st}.exe")
 with open(f"./tmp/xml-{st}.xml","w") as f:
 	f.write(XML_OPT_TEMPLATE%(type_,jar,op,mc))
 os.chdir("\\".join(jar.split("\\")[:-1]))
