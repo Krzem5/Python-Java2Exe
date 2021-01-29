@@ -1,5 +1,4 @@
 import os
-import shutil
 import time
 import zipfile
 
@@ -51,4 +50,9 @@ with open(f"./tmp/xml-{st}.xml","w") as f:
 	f.write(XML_OPT_TEMPLATE%(type_,jar,op,mc))
 os.chdir("\\".join(jar.split("\\")[:-1]))
 os.system(f"\"C:\\Program Files (x86)\\Launch4j\\launch4jc.exe\" {cp}")
-shutil.copyfile(op,jar.split("\\")[-1]+".exe")
+with open(op,"rb") as rf,open(jar.split("\\")[-1]+".exe","wb") as wf:
+	while (True):
+		dt=rf.read(4096)
+		wf.write(dt)
+		if (len(dt)<4096):
+			break
